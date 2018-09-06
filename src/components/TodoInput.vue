@@ -2,7 +2,7 @@
   <div id="todoInput">
     <md-field md-inline>
       <label>What do you need to do?</label>
-      <md-input v-model="todo" @keyup.enter="addTodoItem"></md-input>
+      <md-input v-model="todoText" @keyup.enter="addTodoItem"></md-input>
     </md-field>
     <md-button class="md-raised md-primary" @click="addTodoItem">Add</md-button>
   </div>
@@ -12,20 +12,20 @@
 export default {
   name: 'TodoInput',
   data: function() {
-    let todo = ''
+    let todoText = ''
     return {
-      todo : todo
+      todoText : todoText
     }
   },
   methods: {
     addTodoItem: function () {
-      if(this.todo)
+      if(this.todoText)
       this.$emit('add-todo-item',
       {
-        todoText: this.todo,
+        todoText: this.todoText,
         done: false
       });
-      this.todo = ''
+      this.todoText = ''
     }
   }
 }
